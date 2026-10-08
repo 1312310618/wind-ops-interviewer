@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c1717">
+  <meta name="description" content="离线可用的风电运维岗位模拟面试与能力评分工具">
+  <title>驭风 · 风电运维面试模拟器</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="驭风主页"><span class="brand-mark">风</span><span><b>驭风</b><small>WIND OPS INTERVIEW</small></span></a>
+      <div class="side-label">面试流程</div>
+      <ol class="steps" id="steps">
+        <li class="active"><span>01</span>选择运维等级</li>
+        <li><span>02</span>从业经历</li>
+        <li><span>03</span>专业能力考察</li>
+        <li><span>04</span>评分报告</li>
+      </ol>
+      <div class="sidebar-note"><span class="status-dot"></span> 本地模拟 · 无需联网<br><small>回答仅保存在当前浏览器会话</small></div>
+      <div class="side-bottom">面试模拟器 <span>v1.0</span></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar"><div class="eyebrow">FIELD SERVICE · MOCK INTERVIEW</div><div class="top-meta"><span class="live-dot"></span> 面试模拟模式</div></header>
+
+      <section class="screen active" id="welcomeScreen">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="pill"><span class="pill-spark">✳</span> WIND OPERATIONS · CAREER SIMULATOR</div>
+            <h1>把每一次检修，<br><em>都建立在安全之上。</em></h1>
+            <p class="hero-lead">一场面向风电运维岗位的结构化模拟面试。覆盖故障排查、登塔检修与安全规范，结合你的回答逐层追问，帮助你看清能力与准备方向。</p>
+            <div class="hero-facts"><span><b>01</b> 情景化追问</span><span><b>02</b> 岗位能力评分</span><span><b>03</b> 即时复盘报告</span></div>
+          </div>
+          <div class="hero-art" aria-hidden="true"><div class="sun"></div><div class="windmill m1"><i></i><i></i><i></i><b></b></div><div class="windmill m2"><i></i><i></i><i></i><b></b></div><div class="windmill m3"><i></i><i></i><i></i><b></b></div><div class="horizon"></div><div class="art-caption">FIELD NOTES <span>· 35° 12′ N / 108° 56′ E</span></div></div>
+        </div>
+        <div class="level-card">
+          <div class="level-intro"><div><div class="section-kicker">STEP 01 <span>·</span> 选择面试难度</div><h2>你正在应聘哪个等级？</h2><p>题目深度、追问方式与评分标准将根据等级调整。</p></div><div class="level-mark">01 <i>—</i> 04</div></div>
+          <div class="level-options" id="levelOptions">
+            <button class="level-option selected" data-level="junior"><span class="level-icon">Ⅰ</span><span class="level-name">初级运维</span><span class="level-desc">基础操作 · 安全意识 · 巡检执行</span><span class="level-arrow">↗</span></button>
+            <button class="level-option" data-level="mid"><span class="level-icon">Ⅱ</span><span class="level-name">中级运维</span><span class="level-desc">独立检修 · 故障分析 · 协同处置</span><span class="level-arrow">↗</span></button>
+            <button class="level-option" data-level="senior"><span class="level-icon">Ⅲ</span><span class="level-name">高级运维</span><span class="level-desc">疑难诊断 · 风险决策 · 技术带教</span><span class="level-arrow">↗</span></button>
+          </div>
+          <div class="start-row"><span><span class="keycap">约 10 分钟</span> 6 个核心问题，按回答情况深入追问</span><button class="primary-btn" id="startBtn">开始模拟面试 <span>→</span></button></div>
+        </div>
+        <footer class="page-foot"><span>面试内容为通用训练情景，请以机组厂家手册、现场规程和工作票为准。</span><span>DESIGNED FOR WIND OPERATIONS</span></footer>
+      </section>
+
+      <section class="screen interview-screen" id="interviewScreen" hidden>
+        <div class="interview-heading"><div><div class="section-kicker">STRUCTURED INTERVIEW <span>·</span> <b id="interviewLevel">初级运维</b></div><h1>让我们从你的经历开始。</h1></div><div class="progress-box"><span id="progressLabel">问题 1 / 7</span><div class="progress-track"><i id="progressBar"></i></div></div></div>
+        <div class="interview-layout">
+          <div class="chat-card">
+            <div class="chat-head"><div class="avatar">风</div><div><b>面试官</b><small>风电运维 · 技术面试</small></div><span class="chat-live"><i></i> LIVE</span></div>
+            <div class="chat-log" id="chatLog" aria-live="polite"></div>
+            <form class="answer-box" id="answerForm"><label for="answerInput">你的回答</label><textarea id="answerInput" rows="3" placeholder="结合实际经历说明你的判断和处置步骤…" required></textarea><div class="answer-controls"><span><span class="keycap">Enter</span> 换行 · 点击按钮提交</span><button class="send-btn" type="submit">提交回答 <span>↗</span></button></div></form>
+          </div>
+          <aside class="interview-rail"><div class="rail-card"><div class="rail-kicker">本轮面试</div><div class="rail-stat"><b id="railDone">0</b><span>个问题已完成</span></div><div class="rail-divider"></div><div class="rail-metric"><span>当前等级</span><b id="railLevel">初级</b></div><div class="rail-metric"><span>重点关注</span><b>安全 · 判断 · 实操</b></div></div><div class="rail-tip"><span>✳</span><b>回答提示</b><p>尽量按照“先确保安全，再确认现象，然后分析原因，最后验证恢复”的顺序描述。涉及登塔和电气作业时，说明许可、隔离与监护措施。</p></div><button class="text-button" id="endEarlyBtn">结束面试并生成报告 →</button></aside>
+        </div>
+      </section>
+
+      <section class="screen report-screen" id="reportScreen" hidden>
+        <div class="report-top"><div><div class="section-kicker">INTERVIEW DEBRIEF <span>·</span> 能力复盘</div><h1>面试完成。<br><em>看看你的现场准备度。</em></h1><p id="reportIntro">基于本次回答关键词与处置要点生成的参考性反馈。</p></div><div class="report-stamp"><span>WIND OPS</span><b>FIELD<br>READY?</b><i>面试评估</i></div></div>
+        <div class="report-grid"><div class="score-card"><div class="score-title">综合准备度 <span id="reportLevel">初级运维</span></div><div class="score-main"><strong id="totalScore">0</strong><span>/ 100</span><div class="score-ring" id="scoreRing"><span>FIELD<br>READINESS</span></div></div><div class="score-caption" id="scoreCaption">继续完善现场案例表达</div></div><div class="dimension-card"><div class="dimension-heading">岗位能力维度 <span>按回答内容估算</span></div><div id="dimensionBars"></div></div></div>
+        <div class="report-lower"><div class="feedback-card"><div class="dimension-heading">面试官反馈 <span>KEY OBSERVATIONS</span></div><div id="feedbackContent"></div></div><div class="topic-card"><div class="dimension-heading">覆盖的考察主题 <span>INTERVIEW MAP</span></div><div id="topicList" class="topic-list"></div><div class="report-disclaimer">此评分用于面试练习与自我复盘，不代表正式招聘结论或现场作业授权。</div></div></div>
+        <div class="report-actions"><button class="secondary-btn" id="restartBtn">↻ 重新开始</button><div><button class="secondary-btn" id="downloadBtn">↓ 下载报告</button><button class="primary-btn" id="printBtn">打印 / 保存 PDF <span>↗</span></button></div></div>
+      </section>
+    </main>
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>
